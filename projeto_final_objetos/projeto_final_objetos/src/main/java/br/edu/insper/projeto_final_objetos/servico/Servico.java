@@ -1,6 +1,7 @@
 package br.edu.insper.projeto_final_objetos.servico;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.edu.insper.projeto_final_objetos.agendamento.Agendamento;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public abstract class Servico {
     @ManyToOne
     @JoinColumn(name = "id_profissional")
     private Profissional profissional;
+    */
 
     @JsonIgnore
     @ManyToMany
@@ -37,8 +39,6 @@ public abstract class Servico {
             inverseJoinColumns = @JoinColumn(name = "id_agendamento")
     )
     private List<Agendamento> agendamentos = new ArrayList<>();
-
-     */
 
     public Servico() {
     }
@@ -79,11 +79,10 @@ public abstract class Servico {
     public void setProfissional(Profissional profissional) {
         this.profissional = profissional;
     }
+    */
 
     public List<Agendamento> getAgendamentos() {
         return agendamentos;
     }
-
-     */
 
 }
