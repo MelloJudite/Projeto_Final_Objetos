@@ -23,8 +23,8 @@ export default function Cadastro() {
             const profissional = perfil === 'PROFISSIONAL';
 
             const endereco = profissional
-                ? '/api/profissionais'
-                : '/api/clientes';
+                ? 'https://spa-beleza.onrender.com/profissionais'
+                : 'https://spa-beleza.onrender.com/clientes';
 
             const dados = {
                 nome: nome.trim(),
