@@ -22,8 +22,8 @@ export default function Login() {
 
         try {
             const endpoint = perfil === 'PROFISSIONAL'
-                ? 'https://spa-beleza.onrender.com//profissionais/login'
-                : 'https://spa-beleza.onrender.com//clientes/login';
+                ? 'https://spa-beleza.onrender.com/profissionais/login'
+                : 'https://spa-beleza.onrender.com/clientes/login';
 
             const response = await fetch(endpoint, {
                 method: 'POST',
