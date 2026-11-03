@@ -9,7 +9,7 @@ export default defineConfig({
 
         proxy: {
             '/api': {
-                target: 'http://localhost:8080',
+                target: 'https://spa-beleza.onrender.com/',
                 changeOrigin: true,
 
                 // Remove /api antes de encaminhar ao Spring Boot
