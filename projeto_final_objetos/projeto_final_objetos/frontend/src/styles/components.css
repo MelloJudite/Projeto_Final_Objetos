@@ -1,0 +1,420 @@
+/* NAVBAR */
+
+.navbar {
+    height: 80px;
+    padding: 0 7%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #603b61;
+}
+
+.logo span {
+    color: #b66d80;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: #604c60;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: #b66d80;
+}
+
+.nav-links .login-button {
+    background: #a45b70;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(120deg, #f4e5e8, #f8eee9);
+    padding: 100px 10%;
+    min-height: 370px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #503451;
+    margin: 20px 0;
+}
+
+.hero h1 em {
+    color: #a45b70;
+}
+
+.hero p {
+    color: #705d70;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #a45b70;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #824558;
+}
+
+.hero-flower {
+    color: #bd8291;
+    font-size: 30px;
+    margin-top: 35px;
+}
+
+/* CATEGORIAS */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    margin: 15px 0;
+    color: #503451;
+}
+
+.section-heading p {
+    color: #806e80;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.category-card {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(60, 30, 60, 0.06);
+    transition: transform 0.2s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-icon {
+    font-size: 35px;
+}
+
+.category-card h3 {
+    color: #603b61;
+    margin: 15px 0;
+    font-size: 21px;
+}
+
+.category-card p {
+    color: #806e80;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.more {
+    color: #a45b70;
+    font-weight: bold;
+}
+
+/* FORMULARIOS */
+
+.formulario {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(60, 30, 60, 0.07);
+}
+
+.formulario input,
+.formulario textarea,
+.formulario select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #e5d8e2;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.formulario button {
+    width: 100%;
+    border: none;
+    background: #a45b70;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+    .navbar {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 65px 25px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* CABEÇALHO DO CATÁLOGO */
+
+.catalog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 45px;
+}
+
+.catalog-header .back {
+    display: inline-block;
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+.catalog-title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.catalog-title .eyebrow {
+    display: block;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.catalog-title h1 {
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+.catalog-title .intro {
+    margin: 0;
+    line-height: 1.8;
+    letter-spacing: 0;
+    max-width: 650px;
+}
+
+.all-services {
+    display: inline-block;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+.catalog-message {
+    margin-top: 30px;
+    line-height: 1.8;
+    letter-spacing: 0;
+}
+
+.notice {
+    margin-top: 25px;
+    padding: 25px;
+    line-height: 1.8;
+    letter-spacing: 0;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.service-list {
+    margin-top: 35px;
+}
+
+.service-card {
+    line-height: 1.7;
+}
+
+.service-card h3 {
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.service-card p {
+    line-height: 1.8;
+}
+
+.nav-sair {
+    border: none;
+    background: transparent;
+    color: #604c60;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-sair:hover {
+    color: #a45b70;
+}
+
+
+/* MEUS AGENDAMENTOS */
+
+.appointment-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.appointment-card {
+    background: #FFFFFF;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(60, 30, 60, 0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.appointment-info h2 {
+    color: #503451;
+    font-size: 22px;
+    margin: 15px 0 20px;
+    line-height: 1.4;
+}
+
+.appointment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.appointment-details p {
+    color: #806E80;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.appointment-details p span {
+    margin-right: 8px;
+}
+
+.appointment-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-top: 1px solid #F0E7EC;
+    padding-top: 20px;
+}
+
+.appointment-status {
+    background: #E5F3E8;
+    color: #36734A;
+    width: fit-content;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cancel-button {
+    background: #FFFFFF;
+    color: #9C4C53;
+    border: 1px solid #9C4C53;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background: #9C4C53;
+    color: #FFFFFF;
+}
+
+.cancel-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.empty-appointments {
+    text-align: center;
+    padding: 45px 25px;
+}
+
+.empty-appointments .empty-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #A45B70;
+}
+
+.empty-appointments h2 {
+    color: #503451;
+    margin-bottom: 15px;
+}
+
+.empty-appointments p {
+    color: #806E80;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 700px) {
+    .appointment-list {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-card {
+        padding: 22px;
+    }
+}
+
+
+/* Painel do profissional */
+.professional-tabs { display:flex; gap:12px; flex-wrap:wrap; margin: 10px 0 30px; }
+.professional-tabs button { border:1px solid #E5C9D5; background:#fff; color:#603B61; padding:13px 20px; border-radius:24px; font-weight:700; cursor:pointer; }
+.professional-tabs button.active { background:#A45B70; color:#fff; border-color:#A45B70; }
+.refresh-agenda { margin-top:25px; border:0; background:transparent; color:#775890; font-weight:700; cursor:pointer; }
+.status-pendente { background:#FFF0D8 !important; color:#8B5A12 !important; }
