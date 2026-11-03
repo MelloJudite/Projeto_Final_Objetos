@@ -75,27 +75,34 @@ export function cadastrarCliente(dados) {
 
 // AGENDAMENTOS
 
+export function buscarHorariosDisponiveis(servicoId, data) {
+  return requisicao(`/agendamentos/disponibilidade?servicoId=${servicoId}&data=${data}`);
+}
+
 export function criarAgendamento(dados) {
-  return requisicao('/agendamentos', {
-    method: 'POST',
-    body: JSON.stringify(dados)
-  });
+  return requisicao('/agendamentos', { method: 'POST', body: JSON.stringify(dados) });
 }
 
-export function listarAgendamentos(clienteId, confirmado = false) {
-  return requisicao(
-      `/agendamentos?clienteId=${encodeURIComponent(clienteId)}&confirmado=${confirmado}`
-  );
-}
-
-export function confirmarAgendamento(id) {
-  return requisicao(`/agendamentos/${id}/confirmar`, {
-    method: 'PATCH'
-  });
+export function listarAgendamentos() {
+  return requisicao('/agendamentos');
 }
 
 export function cancelarAgendamento(id) {
-  return requisicao(`/agendamentos/${id}`, {
-    method: 'DELETE'
-  });
+  return requisicao(`/agendamentos/${id}`, { method: 'DELETE' });
+}
+
+export function listarSolicitacoesProfissional() {
+  return requisicao('/agendamentos/solicitacoes');
+}
+
+export function listarMinhaAgendaProfissional() {
+  return requisicao('/agendamentos/minha-agenda');
+}
+
+export function aceitarSolicitacao(id) {
+  return requisicao(`/agendamentos/${id}/aceitar`, { method: 'POST' });
+}
+
+export function cancelarAtendimentoProfissional(id) {
+  return requisicao(`/agendamentos/${id}/profissional`, { method: 'DELETE' });
 }

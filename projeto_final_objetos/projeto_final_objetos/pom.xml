@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>26</java.version>
+		<java.version>27</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -91,10 +91,23 @@
 	</dependencies>
 
 	<build>
+		<sourceDirectory>backend/src/main/java</sourceDirectory>
+
+		<resources>
+			<resource>
+				<directory>backend/src/main/resources</directory>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>
+						br.edu.insper.projeto_final_objetos.ProjetoFinalObjetosApplication
+					</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

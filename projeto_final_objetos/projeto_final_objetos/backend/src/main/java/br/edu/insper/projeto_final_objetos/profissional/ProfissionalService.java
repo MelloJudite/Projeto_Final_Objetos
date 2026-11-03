@@ -23,8 +23,14 @@ public class ProfissionalService {
         if (repository.existsByEmail(email)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email já cadastrado como profissional");
         }
-        Profissional conta = new Profissional(request.getNome().trim(), request.getTelefone(), email,
-                passwordEncoder.encode(request.getSenha()), request.getTipoServico());
+        Profissional conta = new Profissional(
+                request.getNome().trim(),
+                request.getTelefone(),
+                email,
+                passwordEncoder.encode(request.getSenha()),
+                "Não informado"
+        );
+
         try {
             return ProfissionalResponse.de(repository.saveAndFlush(conta));
         } catch (DataIntegrityViolationException ex) {

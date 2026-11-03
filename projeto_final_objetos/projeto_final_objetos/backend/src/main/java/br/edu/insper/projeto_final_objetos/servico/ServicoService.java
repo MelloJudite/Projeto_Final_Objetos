@@ -1,6 +1,7 @@
+
 package br.edu.insper.projeto_final_objetos.servico;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import br.edu.insper.projeto_final_objetos.profissional.ProfissionalRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -10,50 +11,53 @@ import java.util.List;
 @Service
 public class ServicoService {
 
-    @Autowired
-    private ServicoRepository servicoRepository;
+    private final ServicoRepository servicoRepository;
+    private final ProfissionalRepository profissionalRepository;
 
-    public Servico salvar(Servico servico) {
+    public ServicoService(
+            ServicoRepository servicoRepository,
+            ProfissionalRepository profissionalRepository
+    ) {
+        this.servicoRepository = servicoRepository;
+        this.profissionalRepository = profissionalRepository;
+    }
 
-        if (servico.getNome() == null ||
-                servico.getNome().isBlank()) {
+    public Servico salvar(Servico servico, Integer profissionalId) {
+
+        var profissional = profissionalRepository.findById(profissionalId)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Profissional não encontrado"
+                ));
+
+        if (servico.getNome() == null || servico.getNome().isBlank()
+                || servico.getDescricao() == null || servico.getDescricao().isBlank()
+                || !Double.isFinite(servico.getPreco()) || servico.getPreco() <= 0) {
 
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "O nome do serviço é obrigatório"
+                    "Confira os dados do serviço"
             );
         }
 
-        if (servico.getPreco() < 0) {
-
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "O preço não pode ser negativo"
-            );
-        }
+        servico.setProfissional(profissional);
 
         return servicoRepository.save(servico);
     }
 
     public List<Servico> listar() {
-        return servicoRepository.findAll()
-                .stream()
-                .toList();
+        return servicoRepository.findAll();
     }
 
     public Servico buscarPorId(int id) {
-
-        Servico servico = servicoRepository.findById(id)
+        return servicoRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
                         "Serviço não encontrado"
                 ));
-
-        return servico;
     }
 
     public List<Servico> listarPorTipo(String tipo) {
-
         Class<? extends Servico> classe = switch (tipo.toUpperCase()) {
             case "CABELO" -> Cabelo.class;
             case "PELE" -> Pele.class;
@@ -61,15 +65,12 @@ public class ServicoService {
             case "UNHA" -> Unha.class;
             case "MASSAGEM" -> Massagem.class;
             case "MAQUIAGEM" -> Maquiagem.class;
-
             default -> throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
                     "Tipo de serviço inválido"
             );
         };
 
-        return servicoRepository.buscarPorTipo(classe)
-                .stream()
-                .toList();
+        return servicoRepository.buscarPorTipo(classe);
     }
 }

@@ -59,12 +59,12 @@ public class SecurityConfig {
                                 "/profissionais/login"
                         ).permitAll()
 
-                        // Clientes podem consultar serviços
+                        // Consulta pública de serviços
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/servicos",
                                 "/servicos/**"
-                        ).authenticated()
+                        ).permitAll()
 
                         // Profissionais podem cadastrar serviços
                         .requestMatchers(
@@ -82,9 +82,18 @@ public class SecurityConfig {
                                 "/profissionais/**"
                         ).hasRole("PROFISSIONAL")
 
-                        .requestMatchers("/agendamentos", "/agendamentos/**")
+                        // Solicitações e agenda dos profissionais
+                        .requestMatchers("/agendamentos/solicitacoes", "/agendamentos/minha-agenda",
+                                "/agendamentos/*/aceitar", "/agendamentos/*/profissional")
+                        .hasRole("PROFISSIONAL")
+
+                        // Agendamentos dos clientes
+                        .requestMatchers("/agendamentos/disponibilidade", "/agendamentos")
+                        .hasRole("CLIENTE")
+                        .requestMatchers("/agendamentos/*")
                         .hasRole("CLIENTE")
 
+                        // Bloqueia qualquer outra rota não configurada
                         .anyRequest().denyAll()
                 )
 
