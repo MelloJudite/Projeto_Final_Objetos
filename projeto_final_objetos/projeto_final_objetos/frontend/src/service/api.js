@@ -1,5 +1,5 @@
 
-const BASE = '/api';
+const BASE = 'https://spa-beleza.onrender.com';
 
 export async function requisicao(caminho, opcoes = {}) {
   const token = sessionStorage.getItem('token');
